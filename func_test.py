@@ -33,9 +33,9 @@ class BasicTest(unittest.TestCase):
     def test_news_articles_look_correct(self):
         self.browser.get("http://127.0.0.1:8000/news/")
         article_title = self.browser.find_elements(By.CLASS_NAME, "article-title")
-        article_text = self.browser.find_element(By.CLASS_NAME, "article-text")
+        article_summary = self.browser.find_element(By.CLASS_NAME, "article-summary")
         self.assertTrue(article_title)
-        self.assertTrue(article_text)
+        self.assertTrue(article_summary)
 
 if __name__ == "__main__":
     unittest.main()
