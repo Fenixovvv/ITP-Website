@@ -17,3 +17,4 @@ class HomePageTest(TestCase):
         self.assertTrue(html.startswith("<html>"))
         self.assertTrue(html.endswith("</html>"))
         self.assertIn("<title>Increase The Peace</title>", html)
+

@@ -16,8 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from itpInfo.views import home_page
+from itpNews.views import news_page
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', home_page)
+    path('', home_page),
+    path('news/', news_page)    
 ]

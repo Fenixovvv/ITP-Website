@@ -30,5 +30,12 @@ class BasicTest(unittest.TestCase):
         header = self.browser.find_elements(By.TAG_NAME, "h1")[0]
         self.assertIn("Increase The Peace", header.text)
 
+    def test_news_articles_look_correct(self):
+        self.browser.get("http://127.0.0.1:8000/news/")
+        article_title = self.browser.find_elements(By.CLASS_NAME, "article-title")
+        article_text = self.browser.find_element(By.CLASS_NAME, "article-text")
+        self.assertTrue(article_title)
+        self.assertTrue(article_text)
+
 if __name__ == "__main__":
     unittest.main()
