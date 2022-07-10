@@ -1,4 +1,3 @@
-import re
 from django.test import TestCase
 from django.urls import resolve
 from itpInfo.views import home_page

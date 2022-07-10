@@ -1,9 +1,6 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-# Create your views here.
+#from django.http import HttpResponse
 
 def blog_page(request):
-    return HttpResponse("""<html>
-            <title>Increase The News</title>
-            <h1>ITP News</h1>
-        </html>""")
+    context = {}
+    return render(request, "blog_page.html", context)
