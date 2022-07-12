@@ -2,7 +2,7 @@ from datetime import datetime
 from django.http import HttpRequest
 from django.test import TestCase
 from django.urls import resolve
-from itpBlog.views import blog_page
+from itpBlog.views import blog_page, article_page
 from itpBlog.models import Article
 
 class ArticlesTests(TestCase):
@@ -13,6 +13,7 @@ class ArticlesTests(TestCase):
         # текст предпросмотра, полный текст
         # дата публикации
         # и настройку доступа(публичный/админский)
+
         article1 = Article(
             title = "Article I",
             summary = "Summary text I",
@@ -51,14 +52,55 @@ class ArticlesTests(TestCase):
         self.assertEqual(found.func, blog_page)
 
     def test_displaying_articles_on_page(self):
+        Article.objects.create(
+            title = "Article I",
+            summary = "Summary text I",
+            full_text = "Full text I",
+            category = "News",
+            publication_date = datetime.today().strftime('%Y-%m-%d %H:%M'),
+            is_published = True
+        )
+        Article.objects.create(
+            title = "Article II",
+            summary = "Summary text II",
+            full_text = "Full text II",
+            category = "Interview",
+            publication_date = datetime.today().strftime('%Y-%m-%d %H:%M'),
+            is_published = True
+        )
+
         request = HttpRequest()
         response = blog_page(request)
         html = response.content.decode("utf8")
 
-        self.assertIn('title 1', html)
-        self.assertIn('summary 1', html)
-        self.assertNotIn('full_text 1', html)
+        self.assertIn('Article I', html)
+        self.assertIn('/blog/title-1', html)
+        self.assertIn('Summary text I', html)
+        self.assertNotIn('Full text I', html)
 
-        self.assertIn('title 1', html)
-        self.assertIn('summary 1', html)
-        self.assertNotIn('full_text 1', html)
+        self.assertIn('Article II', html)
+        self.assertIn('/blog/title-2', html)
+        self.assertIn('Summary text II', html)
+        self.assertNotIn('Full text II', html)
+
+
+class ArticlePageTest(TestCase):
+
+    def test_article_page_displays_correct_article(self):
+
+        Article.objects.create(
+            title = "Article I",
+            summary = "Summary text I",
+            full_text = "Full text I",
+            category = "News",
+            publication_date = datetime.today().strftime('%Y-%m-%d %H:%M'),
+            is_published = True
+        )
+
+        request = HttpRequest()
+        response = article_page(request)
+        html = response.content.decode("utf8")
+
+        self.assertIn('Article I', html)
+        self.assertNotIn('Summary text I', html)
+        self.assertIn('Full text I', html)

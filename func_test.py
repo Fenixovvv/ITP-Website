@@ -29,13 +29,33 @@ class BasicTest(unittest.TestCase):
         header = self.browser.find_elements(By.TAG_NAME, "h1")[0]
         self.assertIn("Increase The Peace", header.text)
 
-    def test_news_articles_look_correct(self):
+    def test_blog_list_of_articles(self):
+        self.browser.get("http://127.0.0.1:8000/blog/")
+        articles_list = self.browser.find_elements(By.CLASS_NAME, "articles-list")
+        self.assertTrue(articles_list)
+
+    def test_blog_articles_look_correct(self):
         # Проверяет статью на правильность отображения
-        self.browser.get("http://127.0.0.1:8000/news/")
+        self.browser.get("http://127.0.0.1:8000/blog/")
         article_title = self.browser.find_elements(By.CLASS_NAME, "article-title")
         article_summary = self.browser.find_element(By.CLASS_NAME, "article-summary")
         self.assertTrue(article_title)
         self.assertTrue(article_summary)
+
+    def test_blog_article_title_link_leads_to_article_page(self):
+        # Переходим на страницу блога
+        self.browser.get("http://127.0.0.1:8000/blog/")
+        # Ищем название статьи и ссылку на эту статью в тексте названия
+        article_title = self.browser.find_element(By.CLASS_NAME, "article-title")
+        article_link = article_title.find_element(By.TAG_NAME, "a")
+        # Переходим по этой ссылке и ищем название статьи
+        self.browser.get(article_link.get_attribute("href"))
+        article_page_title = self.browser.find_element(By.CLASS_NAME, "article-title")
+        # Сравниваем название статьи на главной странице и странице 
+        # самой статьи
+        self.assertIn(article_title.text, article_title.text)
+
+
 
     # Добавить slug(красивые и понятные ссылки на статьи) #TODO
     #

@@ -16,10 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from itpInfo.views import home_page
-from itpBlog.views import blog_page
+from itpBlog.views import blog_page, article_page
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home_page),
-    path('blog/', blog_page)    
+    path('blog/', blog_page), 
+    path('blog/<int:article_id>/', article_page)  
 ]
