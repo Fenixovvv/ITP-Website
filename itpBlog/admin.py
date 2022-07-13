@@ -5,3 +5,5 @@ from .models import Article
 class AuthorAdmin(admin.ModelAdmin):
     pass
 
+admin.site.site_header = "Admin control panel"
+

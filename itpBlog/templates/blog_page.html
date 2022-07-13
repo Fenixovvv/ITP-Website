@@ -1,14 +1,16 @@
-<html>
-    <title>Increase The News</title>
-    <h1>ITP News</h1>
+{% extends 'base.html' %}
 
+{% block title %}Increase The News{% endblock %}
+
+{% block content %}
     <div class="articles-list">
         {% for article in articles %}
         <div class="article">
-            <h2 class="article-title">{{ article.title }}</h2>
+            <h2 class="article-title">
+                <a href="{{ article.slug }}">{{ article.title }}</a>
+            </h2>
             <p class="article-summary">{{ article.summary }}</p>
         </div>
-        {% endfor %}
-        
+        {% endfor %} 
     </div>
-</html>
+{% endblock %}

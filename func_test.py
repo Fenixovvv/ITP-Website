@@ -46,14 +46,15 @@ class BasicTest(unittest.TestCase):
         # Переходим на страницу блога
         self.browser.get("http://127.0.0.1:8000/blog/")
         # Ищем название статьи и ссылку на эту статью в тексте названия
-        article_title = self.browser.find_element(By.CLASS_NAME, "article-title")
+        article_title = self.browser.find_elements(By.CLASS_NAME, "article-title")[0]
         article_link = article_title.find_element(By.TAG_NAME, "a")
+        article_title_text = article_title.text
         # Переходим по этой ссылке и ищем название статьи
         self.browser.get(article_link.get_attribute("href"))
         article_page_title = self.browser.find_element(By.CLASS_NAME, "article-title")
         # Сравниваем название статьи на главной странице и странице 
         # самой статьи
-        self.assertIn(article_title.text, article_title.text)
+        self.assertIn(article_title_text, article_page_title.text)
 
 
 

@@ -6,7 +6,7 @@ def blog_page(request):
     context = {'articles' : articles}
     return render(request, "blog_page.html", context)
 
-def article_page(request, article_id):
-    article = Article.objects.get(pk=article_id)
+def article_page(request, slug):
+    article = Article.objects.get(slug=slug)
     context = {'article' : article}
     return render(request, "article_page.html", context)

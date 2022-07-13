@@ -20,7 +20,8 @@ class ArticlesTests(TestCase):
             full_text = "Full text I",
             category = "News",
             publication_date = datetime.today().strftime('%Y-%m-%d %H:%M'),
-            is_published = True
+            is_published = True,
+            slug = "slug-1"
         )
         article1.save()
 
@@ -30,7 +31,8 @@ class ArticlesTests(TestCase):
             full_text = "Full text II",
             category = "Interview",
             publication_date = datetime.today().strftime('%Y-%m-%d %H:%M'),
-            is_published = True
+            is_published = True,
+            slug = "slug-2"
         )
         article2.save()
 
@@ -58,7 +60,8 @@ class ArticlesTests(TestCase):
             full_text = "Full text I",
             category = "News",
             publication_date = datetime.today().strftime('%Y-%m-%d %H:%M'),
-            is_published = True
+            is_published = True,
+            slug = "slug-1"
         )
         Article.objects.create(
             title = "Article II",
@@ -66,7 +69,8 @@ class ArticlesTests(TestCase):
             full_text = "Full text II",
             category = "Interview",
             publication_date = datetime.today().strftime('%Y-%m-%d %H:%M'),
-            is_published = True
+            is_published = True,
+            slug = "slug-2"
         )
 
         request = HttpRequest()
@@ -74,12 +78,12 @@ class ArticlesTests(TestCase):
         html = response.content.decode("utf8")
 
         self.assertIn('Article I', html)
-        self.assertIn('/blog/title-1', html)
+        self.assertIn('slug-1', html)
         self.assertIn('Summary text I', html)
         self.assertNotIn('Full text I', html)
 
         self.assertIn('Article II', html)
-        self.assertIn('/blog/title-2', html)
+        self.assertIn('slug-2', html)
         self.assertIn('Summary text II', html)
         self.assertNotIn('Full text II', html)
 
@@ -94,11 +98,12 @@ class ArticlePageTest(TestCase):
             full_text = "Full text I",
             category = "News",
             publication_date = datetime.today().strftime('%Y-%m-%d %H:%M'),
-            is_published = True
+            is_published = True,
+            slug = "test-article"
         )
 
         request = HttpRequest()
-        response = article_page(request)
+        response = article_page(request, "test-article")
         html = response.content.decode("utf8")
 
         self.assertIn('Article I', html)
