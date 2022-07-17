@@ -1,6 +1,10 @@
 from django.shortcuts import render
 from .models import Article
 
+def home_page(request):
+    context = {}
+    return render(request, "info_page.html", context)
+
 def blog_page(request):
     articles = Article.objects.all()
     context = {'articles' : articles}
