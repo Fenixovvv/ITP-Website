@@ -4,9 +4,9 @@ from .models import Article
 def blog_page(request):
     articles = Article.objects.all()
     context = {'articles' : articles}
-    return render(request, "blog_page.html", context)
+    return render(request, 'blog_page.html', context)
 
 def article_page(request, slug):
     article = Article.objects.get(slug=slug)
     context = {'article' : article}
-    return render(request, "article_page.html", context)
+    return render(request, 'article_page.html', context)
