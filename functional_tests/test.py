@@ -4,6 +4,8 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 from django.test import LiveServerTestCase
+from datetime import datetime
+from itpBlog.models import Article
 import logging
 import unittest
 
@@ -15,6 +17,15 @@ class BasicTest(LiveServerTestCase):
         options = webdriver.ChromeOptions() 
         options.add_argument("--disable-gpu")   
         self.browser = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+        Article.objects.create(
+            title = "Article I",
+            summary = "Summary text I",
+            full_text = "Full text I",
+            category = "News",
+            publication_date = datetime.today().strftime('%Y-%m-%d %H:%M'),
+            is_published = True,
+            slug = "test-article"
+        )
 
     def tearDown(self):
         self.browser.quit
