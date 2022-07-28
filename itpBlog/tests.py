@@ -1,24 +1,17 @@
 from datetime import datetime
 from django.http import HttpRequest
 from django.test import TestCase
-from django.urls import resolve
+from django.urls import resolve, reverse
 from itpBlog.views import blog_page, article_page, home_page
 from itpBlog.models import Article
 
 
 class HomePageTest(TestCase):
-    
-    def test_root_url_resolves_to_home_page(self):
-        found = resolve('/')
-        self.assertEqual(found.func, home_page)
 
     def test_home_page_returns_correct_html(self):
-        request = HttpRequest()
-        response = home_page(request)
-        html = response.content.decode("utf8")
-        self.assertTrue(html.startswith("<html>"))
-        self.assertTrue(html.endswith("</html>"))
-        self.assertIn("<title>Increase The Peace</title>", html)
+        url = reverse('blog_page')
+        response = self.client.get(url)
+        self.assertTemplateUsed(response, 'blog_page.html')
 
 
 class ArticlesTests(TestCase):

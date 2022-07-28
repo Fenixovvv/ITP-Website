@@ -1,9 +1,16 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
+{% block title %}{{ article.title }}{% endblock %}
+
 {% block content %}
-{% block title %}Increase The News{% endblock %}
-    <div class="article">
-        <h2 class="article-title">{{ article.title }}</h2>
-        <p class="article-text">{{ article.full_text }}</p>
+    <div class="row page-main">
+        <div class="col-sm-12 col-xl-10 col-xxl-8">
+            <div class="article">
+                <h1 class="article-title">{{ article.title }}</h1>
+                <p class="article-text">{{ article.full_text | safe }}</p>
+            </div>
+        </div>
     </div>
 {% endblock %}

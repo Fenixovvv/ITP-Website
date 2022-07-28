@@ -1,16 +1,24 @@
 {% extends 'base.html' %}
 
-{% block title %}Increase The News{% endblock %}
+{% load static %}
+
+{% block title %}Blog{% endblock %}
 
 {% block content %}
-    <div class="articles-list">
-        {% for article in articles %}
-        <div class="article">
-            <h2 class="article-title">
-                <a href="{{ article.get_absolute_url }}">{{ article.title }}</a>
-            </h2>
-            <p class="article-summary">{{ article.summary }}</p>
+    <div class="row page-main">
+        <div class="col-md-8 col-sm-10">
+            <div class="articles-list">
+                {% for article in articles %}
+                <div class="article">
+                    <h2 class="article-title">
+                        <a href="{{ article.get_absolute_url }}">{{ article.title }}</a>
+                        <p class="article-date">{{ article.publication_date|date:"M d, Y" }}</p>
+                    </h2>
+                    <p class="article-summary">{{ article.summary }}</p>
+                </div>
+                {% endfor %}
+            </div>
         </div>
-        {% endfor %} 
     </div>
+
 {% endblock %}

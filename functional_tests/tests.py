@@ -2,7 +2,6 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.options import Options
 from django.test import LiveServerTestCase
 from datetime import datetime
 from itpBlog.models import Article
@@ -68,7 +67,12 @@ class BasicTest(LiveServerTestCase):
         # самой статьи
         self.assertIn(article_title_text, article_page_title.text)
 
+    def test_layout_and_styling(self):
+        self.browser.get(self.live_server_url + "/blog/")
+        self.browser.set_window_size(1024, 768)
 
+        header = self.browser.find_element(By.TAG_NAME, 'h1')
+        self.assertTrue(header.location['x'] > 10)
 
     # Добавить slug(красивые и понятные ссылки на статьи) #TODO
     #

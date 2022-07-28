@@ -1,0 +1,87 @@
+@font-face {
+    font-family: "AmaticSC-Bold";
+    src: url("../fonts/AmaticSC-Bold.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "Gayathri-Bold";
+    src: url("../fonts/Gayathri-Bold.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "Gayathri-Regular";
+    src: url("../fonts/Gayathri-Regular.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "Gayathri-Thin";
+    src: url("../fonts/Gayathri-Thin.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+h2.article-title a {
+    text-decoration: none;
+    color: brown;
+}
+
+h2.article-title a:hover {
+    color: rgb(163, 98, 98);
+}
+
+.page-header {
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+    /* border: 1px solid red; */
+    height: 6em;
+}
+
+a {
+    font-family: Gayathri-Bold;
+    color: rgb(63, 29, 29);
+}
+
+body {
+    font-family: Gayathri-Regular;
+    font-size: 18px;
+    color: #333;
+    background-color: rgb(231, 210, 210);
+}
+
+h1.itp-title {
+    font-family: AmaticSC-Bold;
+    font-size: 60px;
+}
+
+h1.itp-title img {
+    height: 75px;
+    margin-right: 0.2em;
+}
+
+h1.article-title {
+    font-family: Gayathri-Bold;
+    font-size: 2.5em;
+    color: brown;
+}
+
+/* h1, h2, h3{
+    font-family: Gayathri-Bold;
+} */
+
+.article {
+    margin-bottom: 3em;
+}
+
+.article-date {
+    font-family: Gayathri-Thin;
+    font-size: 20px;
+    color: rgb(107, 107, 107);
+    margin-bottom: 0.2em;
+    margin-top: -0.5em;
+}
