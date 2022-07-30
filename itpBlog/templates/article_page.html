@@ -5,8 +5,10 @@
 {% block title %}{{ article.title }}{% endblock %}
 
 {% block content %}
-    <div class="row page-main">
+    
+    <div class="row">
         <div class="col-sm-12 col-xl-10 col-xxl-8">
+            <input class="button-back" type="button" onclick="history.back();" value="Back"/>
             <div class="article">
                 <h1 class="article-title">{{ article.title }}</h1>
                 <p class="article-text">{{ article.full_text | safe }}</p>
