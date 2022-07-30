@@ -10,18 +10,24 @@
     </head>
 
     <body>
-        <div class="row page-header">
-            <div class="col-auto mx-auto my-auto">
-                <h1 class="itp-title">
-                    <img src="{% static 'itpBlog/images/logo.png' %}">
-                    <span>INCREASE THE PEACE</span>
-                </h1>
-            </div>
-        </div>
         <div class="container">
+            <div class="row page-header">
+                <div class="col-auto mx-auto my-auto">
+                    <h1 class="itp-title">
+                        <img src="{% static 'itpBlog/images/logo.png' %}">
+                        <span>INCREASE THE PEACE</span>
+                    </h1>
+                </div>
+            </div>
             {% block content %}
             {% endblock %}
         </div>
     </body>
+
+    <div class="text-center text-lg-start">
+        <div class="page-footer text-center p-3">
+          © INCREASE THE PEACE 2021-{% now "Y" %} 
+        </div>
+    </div>
 
 </html>
