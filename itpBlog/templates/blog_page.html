@@ -5,7 +5,13 @@
 {% block title %}Blog{% endblock %}
 
 {% block content %}
-    <div class="row page-main">
+    <div class="row">
+        <ul class="navigation-bar list-group list-group-horizontal-sm" id="main-page-list">
+            <a class="nav-button" href="/"><li class="list-group-item">MAIN</li></a>
+            <a class="nav-button" href="/admin/"><li class="list-group-item">ADMIN</li></a>
+        </ul>
+    </div>
+    <div class="row">
         <div class="col-md-8 col-sm-10">
             <div class="articles-list">
                 {% for article in articles %}
