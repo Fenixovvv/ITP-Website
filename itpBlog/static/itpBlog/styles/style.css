@@ -55,6 +55,7 @@ body {
 }
 
 h1.itp-title {
+    color:rgb(142, 40, 151);
     font-family: AmaticSC-Bold;
     font-size: 60px;
 }
@@ -85,3 +86,61 @@ h1.article-title {
     margin-bottom: 0.2em;
     margin-top: -0.5em;
 }
+
+.container {
+    min-height: 700px;
+}
+
+.page-footer {
+    height: 50px;
+    font-size: 0.8em;
+    font-family: Gayathri-Regular;
+    color:rgba(51, 51, 51, 0.5);
+    background-color: rgb(228, 218, 218);
+}
+
+.button-back {
+    font-family: Gayathri-Regular;
+    font-size: 15px;
+    background-color: rgba(210, 105, 30, 0.2);
+    border: none;
+    border-radius: 20px;
+    color: rgba(51, 51, 51, 0.6);
+    padding: 6px 10px 5px 10px;
+    text-decoration: underline;
+    margin-bottom: 1em;
+    cursor: pointer;   
+}
+
+.list-group-item {
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    text-align: center;
+    padding: 8px 16px 4px 16px;
+}
+
+#main-page-list{
+    display: flex;
+}
+
+.nav-button {
+    text-decoration: none;
+    background-color: rgba(214, 144, 118, 0.3);
+    transition: 0.3s;
+    border-radius: 0px;
+    font-size: 20px;
+    font-family: Gayathri-Bold;
+    flex-basis: auto;
+    flex-grow: 1;
+}
+
+.nav-button:hover {
+    transition: 0.3s;
+    border-radius: 20px;
+    background-color: rgba(214, 144, 118);
+}
+
+.navigation-bar {
+    margin-bottom: 2em; 
+}
+
