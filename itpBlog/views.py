@@ -1,9 +1,10 @@
 from django.shortcuts import render
-from .models import Article
+from .models import Article, HomePageText
 
 def home_page(request):
-    context = {}
-    return render(request, "info_page.html", context)
+    text = HomePageText.objects.all()[0].full_text
+    context = {'text' : text}
+    return render(request, 'info_page.html', context)
 
 def blog_page(request):
     articles = Article.objects.all()
